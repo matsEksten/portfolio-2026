@@ -17,9 +17,9 @@ export default function Projects({ lang }: ProjectsProps) {
   return (
     <section
       id="projects"
-      className="mx-auto mt-20 max-w-6xl px-6 scroll-mt-32"
+      className="mx-auto mt-20 max-w-6xl px-6 scroll-mt-32 md:mt-30"
     >
-      <div className="mb-12 flex items-center gap-4">
+      <div className="mb-14 flex items-center gap-4">
         <div className="h-px flex-1 bg-zinc-300" />
         <h2 className="text-lg font-semibold uppercase tracking-[0.2em] text-zinc-600">
           {isSv ? "Mina Projekt" : "My Projects"}

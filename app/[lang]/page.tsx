@@ -3,6 +3,7 @@ import Hero from "@/components/Hero/Hero";
 import About from "@/components/About/About";
 import TechStack from "@/components/TechStack/TechStack";
 import Projects from "@/components/Projects/Projects";
+import Contact from "@/components/Contact/Contact";
 
 type PageProps = {
   params: Promise<{
@@ -19,6 +20,7 @@ export default async function Page({ params }: PageProps) {
       <About lang={lang} />
       <TechStack lang={lang} />
       <Projects lang={lang} />
+      <Contact lang={lang} />
     </main>
   );
 }
