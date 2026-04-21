@@ -5,7 +5,7 @@ export const projectsSv: Project[] = [
     id: "zupchat",
     title: "ZupChat",
     description:
-      "Realtidschatt byggd med React, TypeScript och Firebase. Autentisering, realtidsmeddelanden, bilddelning och chattrum skyddade med accesskod.\nFokus på tydlig arkitektur och stabil mobile-first design.\n\nDemo: demo@demo.com / demo123",
+      "Realtidschatt byggd med React, TypeScript och Firebase. Autentisering, realtidsmeddelanden, bilddelning och profilhantering i flera chattrum.\nFokus på tydlig arkitektur och stabil mobile-first design.\n\nDemo: demo@demo.com / demo123",
     imageSrc: "/images/projects/zupchat.webp",
     liveUrl: "https://zupchat.mx10.se/",
     githubUrl: "https://github.com/matsEksten/zupchat",
@@ -36,7 +36,7 @@ export const projectsSv: Project[] = [
     id: "mexikanska-kollektivet",
     title: "Mexikanska Kollektivet Skåne",
     description:
-      "Responsiv webbplats för en kulturförening med fokus på lekfull design och tydlig struktur.\nInnehåller sidor för innehåll, bilder, länkar och kontakt.\nByggd med Vue, Pug och Vuetify.",
+      "Responsiv webbplats för en kulturförening med lekfull design och flerspråkigt innehåll. Innehåller bildpresentation i grid, länkar och kontakt.\nByggd med Vue, Pug och Vuetify.",
     imageSrc: "/images/projects/MKS.webp",
     liveUrl: "https://mexikanskakollektivet.mx10.se/",
     tech: [

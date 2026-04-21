@@ -1,10 +1,13 @@
 "use client";
 
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { TbFileCv } from "react-icons/tb";
 
 export default function About() {
   const { language } = useLanguage();
   const isSv = language === "sv";
+
+  const href = isSv ? "/cv/mats-eksten-cv-sv.pdf" : "/cv/mats-eksten-cv-en.pdf";
 
   return (
     <section id="about" className="mx-auto mt-20 max-w-4xl px-6 scroll-mt-32">
@@ -28,6 +31,17 @@ export default function About() {
             ? "Jag tycker om att skapa gränssnitt som känns enkla att använda och lätta att navigera i. För mig handlar det om att kombinera struktur och tillgänglighet till en genomtänkt helhet där användarupplevelsen är central."
             : "I enjoy creating interfaces that feel easy to use and intuitive to navigate. For me, it’s about combining structure and accessibility into a thoughtful whole, with the user experience at the center."}
         </p>
+        <div className="flex justify-center mt-12 md:hidden">
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 flex items-center gap-2 rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition"
+          >
+            <TbFileCv className="text-xl" />
+            {isSv ? "CV" : "Resume"}
+          </a>
+        </div>
       </div>
     </section>
   );

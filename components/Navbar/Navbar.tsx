@@ -257,7 +257,7 @@ export default function Navbar() {
             className="absolute top-full left-0 w-full border-b border-zinc-800/15 bg-rose-200 px-6 pb-6 pt-4 shadow-sm rounded-b-xl md:hidden"
           >
             <div className="flex flex-col items-start gap-5">
-              <div className="w-full">
+              <div className="flex justify-start">
                 <ResumeButton onClick={() => setIsMenuOpen(false)} />
               </div>
 

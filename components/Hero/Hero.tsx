@@ -71,7 +71,7 @@ export default function Hero() {
 
           <a
             href="#contact"
-            className="mt-4 self-start rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
+            className="mt-4 self-start rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition hover:opacity-90 hover:scale-103 hover:shadow-lg"
           >
             {isSv ? "Kontakt" : "Contact"}
           </a>
