@@ -138,7 +138,7 @@ export default function Navbar() {
           <motion.div
             initial={{ opacity: 0, scale: 0.55 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
+            transition={{ duration: 0.35, delay: 0.8, ease: "easeOut" }}
           >
             <Link
               href="/"
@@ -235,7 +235,7 @@ export default function Navbar() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.55 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.35, ease: "easeOut", delay: 0.5 }}
+                transition={{ duration: 0.35, ease: "easeOut", delay: 0.8 }}
                 className="hidden md:block"
               >
                 <ResumeButton onClick={() => setIsMenuOpen(false)} />
