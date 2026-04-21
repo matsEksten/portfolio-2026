@@ -135,11 +135,23 @@ export default function Navbar() {
           aria-label="Main navigation"
         >
           {/* Brand / home link */}
-          <div>
-            <Link href="/" className="text-lg font-semibold">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.55 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+          >
+            <Link
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsMenuOpen(false);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className="text-lg font-semibold"
+            >
               Mats Eksten
             </Link>
-          </div>
+          </motion.div>
 
           <div className="flex items-center gap-6">
             {/* Language switcher */}
@@ -167,33 +179,56 @@ export default function Navbar() {
               <div className="flex items-center gap-4">
                 <Link
                   href="#about"
-                  className={
+                  className={`relative pb-1 transition-colors duration-200 ${
                     activeSection === "about"
-                      ? "underline underline-offset-4"
-                      : ""
-                  }
+                      ? "text-zinc-950 font-medium"
+                      : "text-zinc-700 hover:text-zinc-950"
+                  }`}
                 >
                   {isSv ? "Om mig" : "About"}
+                  {activeSection === "about" && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute left-0 -bottom-0.5 h-[2px] w-full rounded-full bg-zinc-950"
+                      transition={{ duration: 0.25, ease: "easeOut" }}
+                    />
+                  )}
                 </Link>
+
                 <Link
                   href="#projects"
-                  className={
+                  className={`relative pb-1 transition-colors duration-200 ${
                     activeSection === "projects"
-                      ? "underline underline-offset-4"
-                      : ""
-                  }
+                      ? "text-zinc-950 font-medium"
+                      : "text-zinc-700 hover:text-zinc-950"
+                  }`}
                 >
                   {isSv ? "Projekt" : "Projects"}
+                  {activeSection === "projects" && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute left-0 -bottom-0.5 h-[2px] w-full rounded-full bg-zinc-950"
+                      transition={{ duration: 0.25, ease: "easeOut" }}
+                    />
+                  )}
                 </Link>
+
                 <Link
                   href="#contact"
-                  className={
+                  className={`relative pb-1 transition-colors duration-200 ${
                     activeSection === "contact"
-                      ? "underline underline-offset-4"
-                      : ""
-                  }
+                      ? "text-zinc-950 font-medium"
+                      : "text-zinc-700 hover:text-zinc-950"
+                  }`}
                 >
                   {isSv ? "Kontakt" : "Contact"}
+                  {activeSection === "contact" && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute left-0 -bottom-0.5 h-[2px] w-full rounded-full bg-zinc-950"
+                      transition={{ duration: 0.25, ease: "easeOut" }}
+                    />
+                  )}
                 </Link>
               </div>
 
