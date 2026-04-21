@@ -11,7 +11,9 @@ export default function LanguageSwitcher({ lang }: LanguageSwitcherProps) {
 
   function handleLanguageChange(nextLang: "sv" | "en") {
     if (nextLang === lang) return;
-    router.push(`/${nextLang}`);
+
+    const currentHash = window.location.hash;
+    router.push(`/${nextLang}${currentHash}`);
   }
 
   return (

@@ -4,6 +4,7 @@ import About from "@/components/About/About";
 import TechStack from "@/components/TechStack/TechStack";
 import Projects from "@/components/Projects/Projects";
 import Contact from "@/components/Contact/Contact";
+import Footer from "@/components/Footer/Footer";
 
 type PageProps = {
   params: Promise<{
@@ -21,6 +22,7 @@ export default async function Page({ params }: PageProps) {
       <TechStack lang={lang} />
       <Projects lang={lang} />
       <Contact lang={lang} />
+      <Footer />
     </main>
   );
 }
