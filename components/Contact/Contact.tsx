@@ -3,10 +3,7 @@
 import { useActionState, useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { sendContactEmail } from "@/app/actions/contact";
-
-type ContactProps = {
-  lang: "sv" | "en";
-};
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 const initialState = {
   success: false,
@@ -14,7 +11,8 @@ const initialState = {
   field: null,
 };
 
-export default function Contact({ lang }: ContactProps) {
+export default function Contact() {
+  const { language: lang } = useLanguage();
   const isSv = lang === "sv";
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

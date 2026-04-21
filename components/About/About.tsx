@@ -1,9 +1,10 @@
-type AboutProps = {
-  lang: "sv" | "en";
-};
+"use client";
 
-export default function About({ lang }: AboutProps) {
-  const isSv = lang === "sv";
+import { useLanguage } from "@/components/providers/LanguageProvider";
+
+export default function About() {
+  const { language } = useLanguage();
+  const isSv = language === "sv";
 
   return (
     <section id="about" className="mx-auto mt-20 max-w-4xl px-6 scroll-mt-32">

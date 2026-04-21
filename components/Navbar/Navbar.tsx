@@ -8,18 +8,17 @@ import { motion } from "motion/react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import HamburgerButton from "./HamburgerButton";
 import ResumeButton from "./ResumeButton";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
-type NavbarProps = {
-  lang: "sv" | "en";
-};
-
-export default function Navbar({ lang }: NavbarProps) {
+export default function Navbar() {
   const [navbarVisible, setNavbarVisible] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
-  const isSv = lang === "sv";
+  const [activeSection, setActiveSection] = useState<
+    "" | "about" | "projects" | "contact"
+  >("");
 
-  console.log(activeSection);
+  const { language } = useLanguage();
+  const isSv = language === "sv";
 
   // Separate refs let the mobile menu close on outside click
   // while keeping the hamburger button and full-width dropdown independent.
@@ -88,25 +87,8 @@ export default function Navbar({ lang }: NavbarProps) {
     };
   }, [isMenuOpen]);
 
-  // Clear the active section and remove the hash near the top of the page
-  // so language switching does not jump the user down to a section.
-  useEffect(() => {
-    const handleTopOfPage = () => {
-      if (window.scrollY < 120) {
-        setActiveSection("");
-        window.history.replaceState(null, "", `/${lang}`);
-      }
-    };
-
-    window.addEventListener("scroll", handleTopOfPage);
-
-    return () => {
-      window.removeEventListener("scroll", handleTopOfPage);
-    };
-  }, [lang]);
-
-  // Track which main section is currently active.
-  // This powers both the active nav state and hash sync in the URL.
+  // Track which section is currently active
+  // so the matching nav link can be highlighted.
   useEffect(() => {
     const sectionIds = ["about", "projects", "contact"];
 
@@ -118,8 +100,6 @@ export default function Navbar({ lang }: NavbarProps) {
       (entries) => {
         if (window.scrollY < 80) {
           setActiveSection("");
-          // Update the URL without triggering a new navigation or scroll jump.
-          window.history.replaceState(null, "", `/${lang}`);
           return;
         }
 
@@ -127,12 +107,9 @@ export default function Navbar({ lang }: NavbarProps) {
 
         if (!visibleEntry) return;
 
-        const newActiveSection = visibleEntry.target.id;
-        setActiveSection(newActiveSection);
-
-        const newUrl = `/${lang}#${newActiveSection}`;
-        // Update the URL without triggering a new navigation or scroll jump.
-        window.history.replaceState(null, "", newUrl);
+        setActiveSection(
+          visibleEntry.target.id as "about" | "projects" | "contact",
+        );
       },
       {
         root: null,
@@ -146,11 +123,11 @@ export default function Navbar({ lang }: NavbarProps) {
     return () => {
       sections.forEach((section) => observer.unobserve(section));
     };
-  }, [lang]);
+  }, []);
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-rose-200 md:top-4 transition-transform duration-300 ease-in-out ${navbarVisible ? "translate-y-0" : "-translate-y-full"} md:translate-y-0`}
+      className={`sticky top-0 z-50 bg-rose-200 transition-transform duration-300 ease-in-out ${navbarVisible ? "translate-y-0" : "-translate-y-full"} md:translate-y-0`}
     >
       <div className="relative">
         <nav
@@ -159,7 +136,7 @@ export default function Navbar({ lang }: NavbarProps) {
         >
           {/* Brand / home link */}
           <div>
-            <Link href={`/${lang}`} className="text-lg font-semibold">
+            <Link href="/" className="text-lg font-semibold">
               Mats Eksten
             </Link>
           </div>
@@ -167,7 +144,7 @@ export default function Navbar({ lang }: NavbarProps) {
           <div className="flex items-center gap-6">
             {/* Language switcher */}
             <div className="flex items-center gap-3 md:hidden">
-              <LanguageSwitcher lang={lang} />
+              <LanguageSwitcher />
             </div>
 
             {/* Mobile controls */}
@@ -188,11 +165,34 @@ export default function Navbar({ lang }: NavbarProps) {
               className="hidden md:flex items-center gap-6"
             >
               <div className="flex items-center gap-4">
-                <Link href={`/${lang}#about`}>{isSv ? "Om mig" : "About"}</Link>
-                <Link href={`/${lang}#projects`}>
+                <Link
+                  href="#about"
+                  className={
+                    activeSection === "about"
+                      ? "underline underline-offset-4"
+                      : ""
+                  }
+                >
+                  {isSv ? "Om mig" : "About"}
+                </Link>
+                <Link
+                  href="#projects"
+                  className={
+                    activeSection === "projects"
+                      ? "underline underline-offset-4"
+                      : ""
+                  }
+                >
                   {isSv ? "Projekt" : "Projects"}
                 </Link>
-                <Link href={`/${lang}#contact`}>
+                <Link
+                  href="#contact"
+                  className={
+                    activeSection === "contact"
+                      ? "underline underline-offset-4"
+                      : ""
+                  }
+                >
                   {isSv ? "Kontakt" : "Contact"}
                 </Link>
               </div>
@@ -203,14 +203,11 @@ export default function Navbar({ lang }: NavbarProps) {
                 transition={{ duration: 0.35, ease: "easeOut", delay: 0.5 }}
                 className="hidden md:block"
               >
-                <ResumeButton
-                  lang={lang}
-                  onClick={() => setIsMenuOpen(false)}
-                />
+                <ResumeButton onClick={() => setIsMenuOpen(false)} />
               </motion.div>
 
               <div className="flex items-center gap-3">
-                <LanguageSwitcher lang={lang} />
+                <LanguageSwitcher />
               </div>
             </motion.div>
           </div>
@@ -218,7 +215,7 @@ export default function Navbar({ lang }: NavbarProps) {
       </div>
 
       {/* Mobile dropdown menu */}
-      <div className="md:hidden relative flex items-center gap-6">
+      <div className="relative md:hidden">
         {isMenuOpen && (
           <div
             ref={mobileDropdownRef}
@@ -226,33 +223,42 @@ export default function Navbar({ lang }: NavbarProps) {
           >
             <div className="flex flex-col items-start gap-5">
               <div className="w-full">
-                <ResumeButton
-                  lang={lang}
-                  onClick={() => setIsMenuOpen(false)}
-                />
+                <ResumeButton onClick={() => setIsMenuOpen(false)} />
               </div>
 
               <div className="h-px w-full bg-zinc-800/15" />
               <Link
-                href={`/${lang}#about`}
+                href="#about"
                 onClick={() => setIsMenuOpen(false)}
-                className="w-full py-1"
+                className={`w-full py-1 ${
+                  activeSection === "about"
+                    ? "underline underline-offset-4"
+                    : ""
+                }`}
               >
                 {isSv ? "Om mig" : "About"}
               </Link>
 
               <Link
-                href={`/${lang}#projects`}
+                href="#projects"
                 onClick={() => setIsMenuOpen(false)}
-                className="w-full py-1"
+                className={`w-full py-1 ${
+                  activeSection === "projects"
+                    ? "underline underline-offset-4"
+                    : ""
+                }`}
               >
                 {isSv ? "Projekt" : "Projects"}
               </Link>
 
               <Link
-                href={`/${lang}#contact`}
+                href="#contact"
                 onClick={() => setIsMenuOpen(false)}
-                className="w-full py-1"
+                className={`w-full py-1 ${
+                  activeSection === "contact"
+                    ? "underline underline-offset-4"
+                    : ""
+                }`}
               >
                 {isSv ? "Kontakt" : "Contact"}
               </Link>

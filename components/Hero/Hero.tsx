@@ -1,10 +1,10 @@
+"use client";
+
 import Image from "next/image";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
-type HeroProps = {
-  lang: "sv" | "en";
-};
-
-export default function Hero({ lang }: HeroProps) {
+export default function Hero() {
+  const { language: lang } = useLanguage();
   const isSv = lang === "sv";
 
   return (
@@ -36,7 +36,7 @@ export default function Hero({ lang }: HeroProps) {
           </p>
 
           <a
-            href={`/${lang}#contact`}
+            href="#contact"
             className="mt-4 self-center rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition hover:opacity-90 md:self-start"
           >
             {isSv ? "Kontakt" : "Contact"}

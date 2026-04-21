@@ -1,17 +1,23 @@
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
-export default async function Page() {
-  const h = await headers();
+import Navbar from "@/components/Navbar/Navbar";
+import Hero from "@/components/Hero/Hero";
+import About from "@/components/About/About";
+import TechStack from "@/components/TechStack/TechStack";
+import Projects from "@/components/Projects/Projects";
+import Contact from "@/components/Contact/Contact";
+import Footer from "@/components/Footer/Footer";
 
-  const country = h.get("x-vercel-ip-country") || h.get("x-country") || "";
-  const acceptLanguage = h.get("accept-language") || "";
-
-  const isSweden = country.toUpperCase() === "SE";
-  const prefersSwedish = acceptLanguage.toLowerCase().startsWith("sv");
-
-  if (isSweden || prefersSwedish) {
-    redirect("/sv");
-  }
-
-  redirect("/en");
+export default function Page() {
+  return (
+    <>
+      <Navbar />
+      <main className="py-8">
+        <Hero />
+        <About />
+        <TechStack />
+        <Projects />
+        <Contact />
+        <Footer />
+      </main>
+    </>
+  );
 }

@@ -1,29 +1,18 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
-type LanguageSwitcherProps = {
-  lang: "sv" | "en";
-};
-
-export default function LanguageSwitcher({ lang }: LanguageSwitcherProps) {
-  const router = useRouter();
-
-  function handleLanguageChange(nextLang: "sv" | "en") {
-    if (nextLang === lang) return;
-
-    const currentHash = window.location.hash;
-    router.push(`/${nextLang}${currentHash}`);
-  }
+export default function LanguageSwitcher() {
+  const { language, setLanguage } = useLanguage();
 
   return (
     <div className="flex items-center gap-1">
       <button
         type="button"
-        onClick={() => handleLanguageChange("sv")}
-        disabled={lang === "sv"}
+        onClick={() => setLanguage("sv")}
+        disabled={language === "sv"}
         className={
-          lang === "sv"
+          language === "sv"
             ? "font-semibold text-zinc-900 cursor-default"
             : "text-zinc-600 cursor-pointer"
         }
@@ -35,10 +24,10 @@ export default function LanguageSwitcher({ lang }: LanguageSwitcherProps) {
 
       <button
         type="button"
-        onClick={() => handleLanguageChange("en")}
-        disabled={lang === "en"}
+        onClick={() => setLanguage("en")}
+        disabled={language === "en"}
         className={
-          lang === "en"
+          language === "en"
             ? "font-semibold text-zinc-900 cursor-default"
             : "text-zinc-600 cursor-pointer"
         }

@@ -1,8 +1,7 @@
-import Image from "next/image";
+"use client";
 
-type TechStackProps = {
-  lang: "sv" | "en";
-};
+import Image from "next/image";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 const techItems = [
   { name: "JavaScript", icon: "/icons/javascript.svg" },
@@ -17,7 +16,8 @@ const techItems = [
   { name: "Git", icon: "/icons/git.svg" },
 ];
 
-export default function TechStack({ lang }: TechStackProps) {
+export default function TechStack() {
+  const { language: lang } = useLanguage();
   const isSv = lang === "sv";
 
   return (

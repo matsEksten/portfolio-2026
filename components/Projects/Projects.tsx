@@ -1,15 +1,16 @@
+"use client";
+
 import Image from "next/image";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 // data
 import { projectsEn } from "@/data/projects/en";
 import { projectsSv } from "@/data/projects/sv";
 
-type ProjectsProps = {
-  lang: "sv" | "en";
-};
-
-export default function Projects({ lang }: ProjectsProps) {
+export default function Projects() {
+  const { language: lang } = useLanguage();
   const isSv = lang === "sv";
 
   const projects = isSv ? projectsSv : projectsEn;
