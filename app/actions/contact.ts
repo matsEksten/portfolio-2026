@@ -50,7 +50,7 @@ export async function sendContactEmail(
 
   try {
     const { data, error } = await resend.emails.send({
-      from: "Mats Eksten <contact@send.mx10.se>",
+      from: "Mats Eksten <contact@mx10.se>",
       to: process.env.CONTACT_TO_EMAIL as string,
       subject: "New portfolio message",
       replyTo: email,
