@@ -11,16 +11,21 @@ export default function Hero() {
   return (
     <section id="hero" className="mx-auto max-w-6xl px-4 py-10 md:py-16">
       <div className="flex flex-col items-center md:flex-row md:items-center md:justify-center">
-        <div className="relative h-72 w-72 shrink-0 overflow-hidden rounded-full border border-zinc-300/60 md:h-96 md:w-96">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+          className="relative h-72 w-72 shrink-0 overflow-hidden rounded-full border border-zinc-300/60 md:h-96 md:w-96"
+        >
           <Image
             src="/images/profile/mats-eksten-profile.webp"
             alt="Mats Eksten"
             fill
             preload
             sizes="(max-width: 768px) 18rem, 24rem"
-            className="object-cover object-center scale-110"
+            className="object-cover object-center scale-100"
           />
-        </div>
+        </motion.div>
 
         {/* Mobile version */}
         <div className="relative z-10 mt-6 flex max-w-2xl flex-col gap-3 text-center md:hidden">
@@ -52,7 +57,7 @@ export default function Hero() {
           animate={{ x: 0, opacity: 1 }}
           transition={{
             type: "spring",
-            delay: 0.15,
+            delay: 0.35,
           }}
           className="relative z-10 hidden max-w-2xl flex-col gap-3 text-center md:-ml-16 md:flex md:translate-y-12 md:max-w-md md:rounded-2xl md:bg-white md:p-8 md:text-left md:shadow-lg lg:p-10"
         >
