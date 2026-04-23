@@ -14,7 +14,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="relative h-72 w-72 shrink-0 overflow-hidden rounded-full border border-zinc-300/60 md:h-96 md:w-96"
         >
           <Image
@@ -57,7 +57,7 @@ export default function Hero() {
           animate={{ x: 0, opacity: 1 }}
           transition={{
             type: "spring",
-            delay: 0.35,
+            delay: 0.55,
           }}
           className="relative z-10 hidden max-w-2xl flex-col gap-3 text-center md:-ml-16 md:flex md:translate-y-12 md:max-w-md md:rounded-2xl md:bg-white md:p-8 md:text-left md:shadow-lg lg:p-10"
         >
