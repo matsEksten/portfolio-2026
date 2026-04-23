@@ -45,6 +45,8 @@ export default function Projects() {
                   src={project.imageSrc}
                   alt={project.title}
                   fill
+                  preload
+                  sizes="(max-width: 767px) 100vw, (max-width: 1279px) 45vw, 30vw"
                   className="object-cover"
                 />
 
@@ -132,6 +134,7 @@ export default function Projects() {
                     src={project.imageSrc}
                     alt={project.title}
                     fill
+                    sizes="(max-width: 767px) 100vw, (max-width: 1279px) 45vw, 30vw"
                     className="object-cover"
                   />
 

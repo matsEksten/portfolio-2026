@@ -16,7 +16,8 @@ export default function Hero() {
             src="/images/profile/mats-eksten-profile.webp"
             alt="Mats Eksten"
             fill
-            priority
+            preload
+            sizes="(max-width: 768px) 18rem, 24rem"
             className="object-cover object-center scale-110"
           />
         </div>
@@ -71,7 +72,7 @@ export default function Hero() {
 
           <a
             href="#contact"
-            className="mt-4 self-start rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition hover:opacity-90 hover:scale-103 hover:shadow-lg"
+            className="mt-4 self-start rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition hover:opacity-90 hover:scale-[1.03] hover:shadow-lg"
           >
             {isSv ? "Kontakt" : "Contact"}
           </a>
