@@ -22,8 +22,8 @@ export default function About() {
       <div className="space-y-6 text-base leading-relaxed text-zinc-700 md:text-lg">
         <p>
           {isSv
-            ? "Före detta tryckare som valde att börja om på ny kula och prova något nytt. När produktionen flyttades utomlands såg jag det som ett bra tillfälle att byta bana och satsa på en framtid som utvecklare. Med en nyfikenhet på hur digitala produkter är uppbyggda och en vilja att fortsätta lära och utvecklas jobbar jag mot att ta steget in i rollen som utvecklare."
-            : "Former print operator who decided to start over and try something new. When production was moved abroad, I saw it as an opportunity to change direction and pursue a future as a developer. With a curiosity for how digital products are built and a desire to keep learning and growing, I’m working towards stepping into a developer role."}
+            ? "Före detta tryckare som valde att börja om på ny kula och prova något nytt. När produktionen flyttades utomlands såg jag det som ett bra tillfälle att byta bana och satsa på en framtid som utvecklare. Med en nyfikenhet på hur digitala produkter är uppbyggda och en vilja att fortsätta lära och utvecklas arbetar jag idag med att utveckla webbapplikationer med fokus på frontend."
+            : "Former print operator who decided to start over and try something new. When production was moved abroad, I saw it as an opportunity to change direction and pursue a future as a developer. With a curiosity for how digital products are built and a desire to keep learning and growing, I work with developing web applications and continue to build my skills as a developer"}
         </p>
 
         <p>
