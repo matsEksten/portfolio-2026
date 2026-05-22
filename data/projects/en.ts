@@ -45,4 +45,19 @@ export const projectsEn: Project[] = [
       { name: "Pug", icon: "/icons/pug.svg" },
     ],
   },
+  {
+    id: "hoverlabs",
+    title: "Hoverlabs",
+    description:
+      "Digital platform for a startup project developing modular garden robots.\nThe work included responsive interfaces, user management, authentication, onboarding, email verification and API integration.",
+    imageSrc: "/images/projects/hover-labs.jpg",
+    caseStudyUrl: "/projects/hoverlabs",
+    tech: [
+      { name: "Next.js", icon: "/icons/nextdotjs.svg" },
+      { name: "TypeScript", icon: "/icons/typescript.svg" },
+      { name: "Prisma", icon: "/icons/prisma.svg" },
+      { name: "Sass", icon: "/icons/sass.svg" },
+      { name: "Zod", icon: "/icons/zod.svg" },
+    ],
+  },
 ];

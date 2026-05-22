@@ -3,6 +3,9 @@ import { Inter, Montserrat } from "next/font/google";
 
 // components
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
+import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer/Footer";
+
 // styles
 import "./globals.css";
 
@@ -29,7 +32,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${montserrat.variable}`}>
       <body className="min-h-screen flex flex-col bg-amber-50 text-zinc-900">
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

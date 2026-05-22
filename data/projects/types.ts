@@ -10,5 +10,6 @@ export type Project = {
   imageSrc: string;
   liveUrl?: string;
   githubUrl?: string;
+  caseStudyUrl?: string;
   tech: TechItem[];
 };

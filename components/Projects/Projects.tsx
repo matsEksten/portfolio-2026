@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { RiPresentationLine } from "react-icons/ri";
 
 import { useLanguage } from "@/components/providers/LanguageProvider";
 
@@ -74,6 +75,16 @@ export default function Projects() {
                     >
                       <FaGithub className="text-base" />
                       <span>GitHub</span>
+                    </a>
+                  )}
+
+                  {project.caseStudyUrl && (
+                    <a
+                      href={project.caseStudyUrl}
+                      rel="noreferrer"
+                      className="flex items-center gap-2 text-sm font-medium text-zinc-900 hover:opacity-80"
+                    >
+                      <RiPresentationLine className="text-base" />
                     </a>
                   )}
                 </div>
@@ -164,6 +175,16 @@ export default function Projects() {
                         <span>GitHub</span>
                       </a>
                     )}
+
+                    {project.caseStudyUrl && (
+                      <a
+                        href={project.caseStudyUrl}
+                        rel="noreferrer"
+                        className="flex items-center gap-2 text-sm font-medium text-zinc-900 hover:opacity-80"
+                      >
+                        <RiPresentationLine className="text-base" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -171,7 +192,17 @@ export default function Projects() {
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut", delay: 0.08 }}
+                transition={{
+                  x: {
+                    duration: 0.4,
+                    ease: "easeOut",
+                    delay: 0.08,
+                  },
+                  opacity: {
+                    duration: 0.1,
+                    delay: 0.08,
+                  },
+                }}
                 viewport={{ once: true, amount: 0.2 }}
                 className="z-10 flex flex-col justify-between gap-4 rounded-b-xl bg-white p-5 shadow-md md:min-h-[250px] md:w-[48%] md:-ml-12 md:translate-y-10 md:rounded-xl lg:min-h-[300px] lg:w-[40%] xl:min-h-[360px] xl:w-[54%] xl:-ml-20"
               >

@@ -9,6 +9,7 @@ import LanguageSwitcher from "./LanguageSwitcher";
 import HamburgerButton from "./HamburgerButton";
 import ResumeButton from "./ResumeButton";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [navbarVisible, setNavbarVisible] = useState(true);
@@ -16,6 +17,9 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState<
     "" | "about" | "projects" | "contact"
   >("");
+
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   const { language } = useLanguage();
   const isSv = language === "sv";
@@ -136,16 +140,23 @@ export default function Navbar() {
         >
           {/* Brand / home link */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.55 }}
+            initial={isHomePage ? { opacity: 0, scale: 0.55 } : false}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.35, delay: 1, ease: "easeOut" }}
+            transition={{
+              duration: 0.35,
+              delay: isHomePage ? 1 : 0,
+              ease: "easeOut",
+            }}
           >
             <Link
               href="/"
               onClick={(e) => {
-                e.preventDefault();
                 setIsMenuOpen(false);
-                window.scrollTo({ top: 0, behavior: "smooth" });
+
+                if (isHomePage) {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
               }}
               className="text-lg font-semibold"
             >
@@ -154,88 +165,105 @@ export default function Navbar() {
           </motion.div>
 
           <div className="flex items-center gap-6">
+            {!isHomePage && (
+              <div className="md:hidden">
+                <ResumeButton onClick={() => setIsMenuOpen(false)} />
+              </div>
+            )}
             {/* Language switcher */}
             <div className="flex items-center gap-3 md:hidden">
               <LanguageSwitcher />
             </div>
 
             {/* Mobile controls */}
-            <div
-              ref={mobileButtonRef}
-              className="text-2xl flex items-center justify-center md:hidden"
-            >
-              <HamburgerButton
-                isOpen={isMenuOpen}
-                onClick={() => setIsMenuOpen((prev) => !prev)}
-              />
-            </div>
+            {isHomePage && (
+              <div
+                ref={mobileButtonRef}
+                className="text-2xl flex items-center justify-center md:hidden"
+              >
+                <HamburgerButton
+                  isOpen={isMenuOpen}
+                  onClick={() => setIsMenuOpen((prev) => !prev)}
+                />
+              </div>
+            )}
             {/* Desktop navigation */}
             <motion.div
-              initial={{ opacity: 0, y: -8 }}
+              initial={isHomePage ? { opacity: 0, y: -8 } : false}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, ease: "easeOut", delay: 0.2 }}
+              transition={{
+                duration: 0.35,
+                ease: "easeOut",
+                delay: isHomePage ? 0.2 : 0,
+              }}
               className="hidden md:flex items-center gap-6"
             >
-              <div className="flex items-center gap-4">
-                <Link
-                  href="#about"
-                  className={`relative pb-1 transition-colors duration-200 ${
-                    activeSection === "about"
-                      ? "text-zinc-950 font-medium"
-                      : "text-zinc-700 hover:text-zinc-950"
-                  }`}
-                >
-                  {isSv ? "Om mig" : "About"}
-                  {activeSection === "about" && (
-                    <motion.span
-                      layoutId="nav-underline"
-                      className="absolute left-0 -bottom-0.5 h-[2px] w-full rounded-full bg-zinc-950"
-                      transition={{ duration: 0.25, ease: "easeOut" }}
-                    />
-                  )}
-                </Link>
+              {isHomePage && (
+                <div className="flex items-center gap-4">
+                  <Link
+                    href="#about"
+                    className={`relative pb-1 transition-colors duration-200 ${
+                      activeSection === "about"
+                        ? "text-zinc-950 font-medium"
+                        : "text-zinc-700 hover:text-zinc-950"
+                    }`}
+                  >
+                    {isSv ? "Om mig" : "About"}
+                    {activeSection === "about" && (
+                      <motion.span
+                        layoutId="nav-underline"
+                        className="absolute left-0 -bottom-0.5 h-[2px] w-full rounded-full bg-zinc-950"
+                        transition={{ duration: 0.25, ease: "easeOut" }}
+                      />
+                    )}
+                  </Link>
 
-                <Link
-                  href="#projects"
-                  className={`relative pb-1 transition-colors duration-200 ${
-                    activeSection === "projects"
-                      ? "text-zinc-950 font-medium"
-                      : "text-zinc-700 hover:text-zinc-950"
-                  }`}
-                >
-                  {isSv ? "Projekt" : "Projects"}
-                  {activeSection === "projects" && (
-                    <motion.span
-                      layoutId="nav-underline"
-                      className="absolute left-0 -bottom-0.5 h-[2px] w-full rounded-full bg-zinc-950"
-                      transition={{ duration: 0.25, ease: "easeOut" }}
-                    />
-                  )}
-                </Link>
+                  <Link
+                    href="#projects"
+                    className={`relative pb-1 transition-colors duration-200 ${
+                      activeSection === "projects"
+                        ? "text-zinc-950 font-medium"
+                        : "text-zinc-700 hover:text-zinc-950"
+                    }`}
+                  >
+                    {isSv ? "Projekt" : "Projects"}
+                    {activeSection === "projects" && (
+                      <motion.span
+                        layoutId="nav-underline"
+                        className="absolute left-0 -bottom-0.5 h-[2px] w-full rounded-full bg-zinc-950"
+                        transition={{ duration: 0.25, ease: "easeOut" }}
+                      />
+                    )}
+                  </Link>
 
-                <Link
-                  href="#contact"
-                  className={`relative pb-1 transition-colors duration-200 ${
-                    activeSection === "contact"
-                      ? "text-zinc-950 font-medium"
-                      : "text-zinc-700 hover:text-zinc-950"
-                  }`}
-                >
-                  {isSv ? "Kontakt" : "Contact"}
-                  {activeSection === "contact" && (
-                    <motion.span
-                      layoutId="nav-underline"
-                      className="absolute left-0 -bottom-0.5 h-[2px] w-full rounded-full bg-zinc-950"
-                      transition={{ duration: 0.25, ease: "easeOut" }}
-                    />
-                  )}
-                </Link>
-              </div>
+                  <Link
+                    href="#contact"
+                    className={`relative pb-1 transition-colors duration-200 ${
+                      activeSection === "contact"
+                        ? "text-zinc-950 font-medium"
+                        : "text-zinc-700 hover:text-zinc-950"
+                    }`}
+                  >
+                    {isSv ? "Kontakt" : "Contact"}
+                    {activeSection === "contact" && (
+                      <motion.span
+                        layoutId="nav-underline"
+                        className="absolute left-0 -bottom-0.5 h-[2px] w-full rounded-full bg-zinc-950"
+                        transition={{ duration: 0.25, ease: "easeOut" }}
+                      />
+                    )}
+                  </Link>
+                </div>
+              )}
 
               <motion.div
-                initial={{ opacity: 0, scale: 0.55 }}
+                initial={isHomePage ? { opacity: 0, scale: 0.55 } : false}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.35, ease: "easeOut", delay: 1 }}
+                transition={{
+                  duration: 0.35,
+                  ease: "easeOut",
+                  delay: isHomePage ? 1 : 0,
+                }}
                 className="hidden md:block"
               >
                 <ResumeButton onClick={() => setIsMenuOpen(false)} />
@@ -250,57 +278,59 @@ export default function Navbar() {
       </div>
 
       {/* Mobile dropdown menu */}
-      <div className="relative md:hidden">
-        {isMenuOpen && (
-          <div
-            ref={mobileDropdownRef}
-            className="absolute top-full left-0 w-full border-b border-zinc-800/15 bg-rose-200 px-6 pb-6 pt-4 shadow-sm rounded-b-xl md:hidden"
-          >
-            <div className="flex flex-col items-start gap-5">
-              <div className="flex justify-start">
-                <ResumeButton onClick={() => setIsMenuOpen(false)} />
+      {isHomePage && (
+        <div className="relative md:hidden">
+          {isMenuOpen && (
+            <div
+              ref={mobileDropdownRef}
+              className="absolute top-full left-0 w-full border-b border-zinc-800/15 bg-rose-200 px-6 pb-6 pt-4 shadow-sm rounded-b-xl md:hidden"
+            >
+              <div className="flex flex-col items-start gap-5">
+                <div className="flex justify-start">
+                  <ResumeButton onClick={() => setIsMenuOpen(false)} />
+                </div>
+
+                <div className="h-px w-full bg-zinc-800/15" />
+                <Link
+                  href="#about"
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`w-full py-1 ${
+                    activeSection === "about"
+                      ? "underline underline-offset-4"
+                      : ""
+                  }`}
+                >
+                  {isSv ? "Om mig" : "About"}
+                </Link>
+
+                <Link
+                  href="#projects"
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`w-full py-1 ${
+                    activeSection === "projects"
+                      ? "underline underline-offset-4"
+                      : ""
+                  }`}
+                >
+                  {isSv ? "Projekt" : "Projects"}
+                </Link>
+
+                <Link
+                  href="#contact"
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`w-full py-1 ${
+                    activeSection === "contact"
+                      ? "underline underline-offset-4"
+                      : ""
+                  }`}
+                >
+                  {isSv ? "Kontakt" : "Contact"}
+                </Link>
               </div>
-
-              <div className="h-px w-full bg-zinc-800/15" />
-              <Link
-                href="#about"
-                onClick={() => setIsMenuOpen(false)}
-                className={`w-full py-1 ${
-                  activeSection === "about"
-                    ? "underline underline-offset-4"
-                    : ""
-                }`}
-              >
-                {isSv ? "Om mig" : "About"}
-              </Link>
-
-              <Link
-                href="#projects"
-                onClick={() => setIsMenuOpen(false)}
-                className={`w-full py-1 ${
-                  activeSection === "projects"
-                    ? "underline underline-offset-4"
-                    : ""
-                }`}
-              >
-                {isSv ? "Projekt" : "Projects"}
-              </Link>
-
-              <Link
-                href="#contact"
-                onClick={() => setIsMenuOpen(false)}
-                className={`w-full py-1 ${
-                  activeSection === "contact"
-                    ? "underline underline-offset-4"
-                    : ""
-                }`}
-              >
-                {isSv ? "Kontakt" : "Contact"}
-              </Link>
             </div>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
     </header>
   );
 }

@@ -13,7 +13,7 @@ export default function Hero() {
       <div className="flex flex-col items-center md:flex-row md:items-center md:justify-center">
         <motion.div
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="relative h-72 w-72 shrink-0 overflow-hidden rounded-full border border-zinc-300/60 md:h-96 md:w-96"
         >

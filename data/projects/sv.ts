@@ -45,4 +45,19 @@ export const projectsSv: Project[] = [
       { name: "Pug", icon: "/icons/pug.svg" },
     ],
   },
+  {
+    id: "hoverlabs",
+    title: "Hoverlabs",
+    description:
+      "Digital plattform för ett startup-projekt som utvecklar modulära trädgårdsrobotar.\nArbetet inkluderade responsiva gränssnitt, användarhantering, autentisering, onboarding, e-postverifiering och API-integration.",
+    imageSrc: "/images/projects/hover-labs.jpg",
+    caseStudyUrl: "/projects/hoverlabs",
+    tech: [
+      { name: "Next.js", icon: "/icons/nextdotjs.svg" },
+      { name: "TypeScript", icon: "/icons/typescript.svg" },
+      { name: "Prisma", icon: "/icons/prisma.svg" },
+      { name: "Sass", icon: "/icons/sass.svg" },
+      { name: "Zod", icon: "/icons/zod.svg" },
+    ],
+  },
 ];
