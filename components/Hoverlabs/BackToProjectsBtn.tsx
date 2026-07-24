@@ -15,7 +15,7 @@ export default function BackToProjectsBtn() {
         className="inline-flex items-center gap-2 text-sm font-medium text-zinc-600 transition hover:text-zinc-950"
       >
         <FiArrowLeft className="text-base" />
-        {isSv ? "Tillbaka till projekt" : "Back to portfolio"}
+        {isSv ? "Tillbaka till projekt" : "Back to projects"}
       </Link>
     </div>
   );

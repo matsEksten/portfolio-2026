@@ -21,7 +21,7 @@ export default function Hero() {
             src="/images/profile/mats-eksten-profile.webp"
             alt="Mats Eksten"
             fill
-            preload
+            priority
             sizes="(max-width: 768px) 18rem, 24rem"
             className="object-cover object-center scale-100"
           />
@@ -53,13 +53,16 @@ export default function Hero() {
 
         {/* Desktop version */}
         <motion.div
-          initial={{ x: 120, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
+          initial={{ x: 100, y: 48, opacity: 0 }}
+          animate={{ x: 0, y: 48, opacity: 1 }}
           transition={{
             type: "spring",
-            delay: 0.55,
+            delay: 0.45,
+            stiffness: 200,
+            damping: 12,
+            mass: 0.9,
           }}
-          className="relative z-10 hidden max-w-2xl flex-col gap-3 text-center md:-ml-16 md:flex md:translate-y-12 md:max-w-md md:rounded-2xl md:bg-white md:p-8 md:text-left md:shadow-lg lg:p-10"
+          className="relative z-10 hidden max-w-2xl flex-col gap-3 text-center will-change-transform md:-ml-16 md:flex md:max-w-md md:rounded-2xl md:bg-white md:p-8 md:text-left md:shadow-lg lg:p-10"
         >
           <p className="text-sm uppercase tracking-[0.2em] text-zinc-500">
             {isSv ? "Frontendutvecklare" : "Frontend Developer"}
