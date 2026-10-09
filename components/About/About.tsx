@@ -22,14 +22,14 @@ export default function About() {
       <div className="space-y-6 text-base leading-relaxed text-zinc-700 md:text-lg">
         <p>
           {isSv
-            ? "Före detta tryckare som valde att börja om på ny kula och prova något nytt. När produktionen flyttades utomlands såg jag det som ett bra tillfälle att byta bana och satsa på en framtid som utvecklare. Med en nyfikenhet på hur digitala produkter är uppbyggda och en vilja att fortsätta lära och utvecklas arbetar jag idag med att utveckla webbapplikationer med fokus på frontend."
-            : "Former print operator who decided to start over and try something new. When production was moved abroad, I saw it as an opportunity to change direction and pursue a future as a developer. With a curiosity for how digital products are built and a desire to keep learning and growing, I work with developing web applications and continue to build my skills as a developer"}
+            ? "Före detta tryckare som valde att börja om på ny kula och prova något nytt. När produktionen flyttades utomlands såg jag det som ett bra tillfälle att byta bana och rikta in mig på en framtid som utvecklare. Med ett intresse för kod, en nyfikenhet på hur digitala tjänster är uppbyggda och en vilja att fortsätta lära mig och utvecklas inom området bygger jag idag vidare på min kompetens inom systemutveckling."
+            : "Former print operator who decided to start over and try something new. When production was moved abroad, I saw it as a good opportunity to change direction and pursue a future as a developer. With an interest in code, a curiosity about how digital services are built, and a desire to keep learning and developing within the field, I am now continuing to build my skills in software development."}
         </p>
 
         <p>
           {isSv
-            ? "Jag tycker om att skapa gränssnitt som känns enkla att använda och lätta att navigera i. För mig handlar det om att kombinera struktur och tillgänglighet till en genomtänkt helhet där användarupplevelsen är central."
-            : "I enjoy creating interfaces that feel easy to use and intuitive to navigate. For me, it’s about combining structure and accessibility into a thoughtful whole, with the user experience at the center."}
+            ? "Jag har en examen i frontendutveckling från Medieinstitutet i Malmö och studerar nu systemutveckling med C# och .NET på Newton, även det i Malmö. Mitt mål är att bygga en bredare och mer komplett kunskapsbas, där mina grundkunskaper inom frontend utgör en del av den helhet jag nu försöker skapa när jag inriktar mig mer mot backend, databaser och systemutveckling. Det övergripande målet är att lägga grunden för en långsiktig yrkesroll inom utveckling."
+            : "I have a degree in Frontend Development from Medieinstitutet in Malmö and am currently studying Software Development with C# and .NET at Newton, also in Malmö. My goal is to build a broader and more complete knowledge base, where my foundation in frontend development forms part of the wider profile I am now creating as I focus more on backend development, databases, and software development. The overall goal is to build a solid foundation for a long-term career in development."}
         </p>
         <div className="flex justify-center mt-12 md:hidden">
           <a

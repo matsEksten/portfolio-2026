@@ -74,8 +74,8 @@ export default function Hero() {
 
           <p className="text-base leading-relaxed text-zinc-700">
             {isSv
-              ? "Jag gillar att skapa användarvänliga gränssnitt där struktur och tillgänglighet formar en genomtänkt helhet. Jag drivs av nyfikenhet och en vilja att fortsätta utvecklas och fördjupa min förståelse för kod."
-              : "I enjoy building user-friendly interfaces where structure and accessibility shape a thoughtful and cohesive experience. I’m driven by curiosity and a desire to keep learning and deepen my understanding of code."}
+              ? "Jag gillar att skapa användarvänliga digitala tjänster där struktur och tillgänglighet bidrar till en genomtänkt helhet. Jag drivs av nyfikenhet och en vilja att fortsätta utvecklas och fördjupa min förståelse för kod."
+              : "I enjoy building user-friendly digital services where structure and accessibility contribute to a thoughtful whole. I’m driven by curiosity and a desire to keep learning and deepen my understanding of code."}
           </p>
 
           <a
