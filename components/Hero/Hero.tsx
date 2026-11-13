@@ -30,7 +30,7 @@ export default function Hero() {
         {/* Mobile version */}
         <div className="relative z-10 mt-6 flex max-w-2xl flex-col gap-3 text-center md:hidden">
           <p className="text-sm uppercase tracking-[0.2em] text-zinc-500">
-            {isSv ? "Utvecklare" : "Developer"}
+            {isSv ? "Webbutvecklare" : "Web Developer"}
           </p>
 
           <h1 className="text-4xl font-bold tracking-tight">
@@ -39,8 +39,8 @@ export default function Hero() {
 
           <p className="text-base leading-relaxed text-zinc-700">
             {isSv
-              ? "Jag gillar att skapa användarvänliga gränssnitt där struktur och tillgänglighet formar en genomtänkt helhet. Jag drivs av nyfikenhet och en vilja att fortsätta utvecklas och fördjupa min förståelse för kod."
-              : "I enjoy building user-friendly interfaces where structure and accessibility shape a thoughtful and cohesive experience. I’m driven by curiosity and a desire to keep learning and deepen my understanding of code."}
+              ? "Jag gillar att skapa användarvänliga digitala tjänster där struktur och tillgänglighet formar en genomtänkt helhet. Jag drivs av nyfikenhet och en vilja att fortsätta utvecklas och fördjupa min förståelse för kod."
+              : "I enjoy building user-friendly digital services where structure and accessibility shape a thoughtful and cohesive experience. I’m driven by curiosity and a desire to keep learning and deepen my understanding of code."}
           </p>
 
           <a
